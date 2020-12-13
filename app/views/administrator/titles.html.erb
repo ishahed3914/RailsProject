@@ -1,0 +1,29 @@
+<%= form_with(url: administrator_titles_path, method: :get, local: true) do |form| %>
+  <%= form.label :query_title, "Search Title" %>
+  <%= form.text_field :query_title %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @query %>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>ISBN</th>
+    </tr>
+   
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.ISBN %></td>
+        <% if book.copies > 0 %>
+        <td><%= link_to 'Checkout', administrator_checkout_path(administrator_id: 1, id: book.id)%></td>
+        <td><%= link_to 'Edit', edit_book_path(administrator_id: 1, id: book.id) %></td>
+        <% else %>
+        <td><%= link_to 'Edit', edit_book_path(administrator_id: 1, id: book.id) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+</table>
+<% end %>

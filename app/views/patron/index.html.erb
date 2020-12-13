@@ -1,0 +1,16 @@
+<h1>Search Books</h1>
+<%= form_with(url: patron_titles_path, method: :get, local: true) do |form| %>
+  <%= form.label :query_title, "Search Title" %>
+  <%= form.text_field :query_title %>
+  <%= form.submit "Search" %>
+<% end %>
+<%= form_with(url: patron_authors_path, method: :get, local: true) do |form| %>
+  <%= form.label :query_author, "Search Author" %>
+  <%= form.text_field :query_author %>
+  <%= form.submit "Search" %>
+<% end %>
+<%= form_with(url: patron_isbns_path, method: :get, local: true) do |form| %>
+  <%= form.label :query_isbn, "Search ISBN" %>
+  <%= form.text_field :query_isbn %>
+  <%= form.submit "Search" %>
+<% end %>
